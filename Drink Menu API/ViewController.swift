@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDataSource {
                 self.drinks = downloadedDrinks.drinks
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    print(self.drinks)
+                    print(downloadedDrinks.drinks[0].strDrink)
                 }
             } catch {
                 print("something wrong after downloaded")
@@ -52,16 +52,24 @@ class ViewController: UIViewController, UITableViewDataSource {
         return drinks.count
     }
     
-//    sets JSON data to model
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DrinkCell") as? DrinkCell else { return UITableViewCell() }
         
-        cell.drinkName.text = "Drink: " + drinks[indexPath.row].strDrink
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "DrinkCell"
         
-        cell.contentView.backgroundColor = UIColor.darkGray
-        cell.backgroundColor = UIColor.darkGray
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? DrinkCell  else {
+            fatalError("The dequeued cell is not an instance of DrinkCell.")
+        }
         
-//        sets API images to image from model
+//        Fetches the appropriate drink for the data source layout.
+        let drink = drinks[indexPath.row]
+        
+        cell.drinkName.text = drink.strDrink
+        
+        cell.contentView.backgroundColor = UIColor.gray
+        cell.backgroundColor = UIColor.gray
+        
         if let imageURL = URL(string: drinks[indexPath.row].strDrinkThumb) {
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: imageURL)
@@ -73,6 +81,7 @@ class ViewController: UIViewController, UITableViewDataSource {
                 }
             }
         }
+
         return cell
     }
 }
