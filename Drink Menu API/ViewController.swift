@@ -8,11 +8,16 @@
 
 import UIKit
 
+//drink ID variable for URL
+var urlId:String = "12560"
+
 class ViewController: UIViewController, UITableViewDataSource {
-//    API URL
-    final let url = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic")
-//    sets variable to meodel
+//    API URLs
+    final let drinkUrl = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic")
+    
+//    sets variable to model
     private var drinks = [Drink]()
+    
 //    Table View outlet
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,8 +30,8 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 //    GET JSON from API
     func downloadJson() {
-        guard let downloadURL = url else { return }
-        URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
+        guard let downloadDrinksURL = drinkUrl else { return }
+        URLSession.shared.dataTask(with: downloadDrinksURL) { data, urlResponse, error in
             guard let data = data, error == nil, urlResponse != nil else {
                 print("something is wrong")
                 return
@@ -39,12 +44,13 @@ class ViewController: UIViewController, UITableViewDataSource {
                 self.drinks = downloadedDrinks.drinks
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    print(downloadedDrinks.drinks[0].strDrink)
+//                    print(self.drinks)
                 }
             } catch {
-                print("something wrong after downloaded")
+                print("something wrong after download")
             }
             }.resume()
+        
     }
     
 //    sets number of cells in table
@@ -52,7 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         return drinks.count
     }
     
-    
+//    connects JSON data to view outlets
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Table view cells are reused and should be dequeued using a cell identifier.
@@ -66,10 +72,9 @@ class ViewController: UIViewController, UITableViewDataSource {
         let drink = drinks[indexPath.row]
         
         cell.drinkName.text = drink.strDrink
+        urlId = drink.idDrink
         
-        cell.contentView.backgroundColor = UIColor.gray
-        cell.backgroundColor = UIColor.gray
-        
+//        sets URL string from JSON to imageView
         if let imageURL = URL(string: drinks[indexPath.row].strDrinkThumb) {
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: imageURL)
@@ -84,5 +89,6 @@ class ViewController: UIViewController, UITableViewDataSource {
 
         return cell
     }
+    
 }
 

@@ -14,6 +14,7 @@
 		FBBE1FC224F46FA40024C1A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBBE1FC024F46FA40024C1A1 /* LaunchScreen.storyboard */; };
 		FBBE1FCA24F4701E0024C1A1 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBE1FC924F4701E0024C1A1 /* Drink.swift */; };
 		FBBE1FCC24F470360024C1A1 /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBE1FCB24F470360024C1A1 /* DrinkCell.swift */; };
+		FBF3A5D524F5AB5300FC59FC /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3A5D424F5AB5300FC59FC /* DescriptionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FBBE1FC324F46FA40024C1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBBE1FC924F4701E0024C1A1 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		FBBE1FCB24F470360024C1A1 /* DrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCell.swift; sourceTree = "<group>"; };
+		FBF3A5D424F5AB5300FC59FC /* DescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				FBBE1FB724F46FA30024C1A1 /* AppDelegate.swift */,
 				FBBE1FB924F46FA30024C1A1 /* ViewController.swift */,
 				FBBE1FBB24F46FA30024C1A1 /* Main.storyboard */,
+				FBF3A5D424F5AB5300FC59FC /* DescriptionController.swift */,
 				FBBE1FC924F4701E0024C1A1 /* Drink.swift */,
 				FBBE1FCB24F470360024C1A1 /* DrinkCell.swift */,
 				FBBE1FBE24F46FA40024C1A1 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 				FBBE1FCA24F4701E0024C1A1 /* Drink.swift in Sources */,
 				FBBE1FCC24F470360024C1A1 /* DrinkCell.swift in Sources */,
 				FBBE1FB824F46FA30024C1A1 /* AppDelegate.swift in Sources */,
+				FBF3A5D524F5AB5300FC59FC /* DescriptionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
